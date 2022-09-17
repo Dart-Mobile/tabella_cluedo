@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../table/Cell.dart';
-import '../enums/Enums.dart';
-import 'TextField.dart';
+import '../table/_cell.dart';
+import '../enums/_enums.dart';
+import '_textfield.dart';
 
 class AddPlayer extends StatefulWidget {
   const AddPlayer({Key? key}) : super(key: key);

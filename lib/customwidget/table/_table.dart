@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../enums/Enums.dart';
-import 'Cell.dart';
+import '../enums/_enums.dart';
+import '_cell.dart';
 
 class CustomTable extends StatelessWidget {
   CustomTable(

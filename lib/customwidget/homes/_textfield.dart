@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tabella_cluedo/customwidget/table/Cell.dart';
-import '../enums/Enums.dart';
+import 'package:tabella_cluedo/customwidget/table/_cell.dart';
+import '../enums/_enums.dart';
 
 class CustomTextField extends StatefulWidget {
   CustomTextField({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../table/Cell.dart';
+import '../table/_cell.dart';
 
 class Tupla {
   String a;

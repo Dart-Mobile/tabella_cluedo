@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'customwidget/homes/home.dart';
-import 'customwidget/homes/homeAddPlayer.dart';
-import 'customwidget/enums/Enums.dart';
+import 'customwidget/homes/_home.dart';
+import 'customwidget/homes/_homeAddPlayer.dart';
 
 void main() {
   runApp(const MyApp());

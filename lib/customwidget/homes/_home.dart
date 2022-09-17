@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../table/Table.dart';
-import '../table/Cell.dart';
-import '../table/DropDown.dart';
-import '../enums/Enums.dart';
+import '../table/_table.dart';
+import '../table/_cell.dart';
+import '../table/_dropdown.dart';
+import '../enums/_enums.dart';
 
 class Home extends StatefulWidget {
   Home({super.key, required this.head});
