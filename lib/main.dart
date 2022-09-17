@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => AddPlayer(),
+          '/': (context) => const AddPlayer(),
           '/who':(context) => Home(head: 0),
           '/what':(context) => Home(head: 1),
           '/where':(context) => Home(head: 2)

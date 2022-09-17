@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../table/_cell.dart';
 import '../enums/_enums.dart';
 import '_textfield.dart';
 
@@ -41,7 +40,6 @@ class _AddPlayerState extends State<AddPlayer> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.check),
         backgroundColor: ColorPatterns.internal,
         onPressed: () {
           setState(() {
@@ -51,7 +49,8 @@ class _AddPlayerState extends State<AddPlayer> {
             ];
             Navigator.pushNamed(context, '/who');
           });
-        }
+        },
+      child: const Icon(Icons.check),
       ),
     );
   }

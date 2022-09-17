@@ -18,7 +18,7 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextField extends State<CustomTextField> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   double widthDim(double perc) =>
       (MediaQuery.of(context).size.width * perc) / 100;
@@ -35,7 +35,7 @@ class _CustomTextField extends State<CustomTextField> {
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: Container(
-              margin: EdgeInsets.all(0.0),
+              margin: const EdgeInsets.all(0.0),
               child: TextField(
                 controller: _controller,
                 maxLength: 6,
@@ -56,7 +56,7 @@ class _CustomTextField extends State<CustomTextField> {
           width: widthDim(35),
           child: Container(
             //width: 100.0,
-            margin: EdgeInsets.only(bottom: 23.0),
+            margin: const EdgeInsets.only(bottom: 23.0),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(9)),
               color: avatarColors[Clues.who[widget.save.b]],
@@ -69,16 +69,13 @@ class _CustomTextField extends State<CustomTextField> {
                       .map((String val) => DropdownMenuItem<String>(
                           value: val,
                           child: Container(
-                            width: 110.0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                              ),
-                              child: Text(
-                                val,
-                                style: TextStyle(
-                                  color: ColorPatterns.text,
-                                ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                            ),
+                            child: Text(
+                              val,
+                              style: TextStyle(
+                                color: ColorPatterns.text,
                               ),
                             ),
                           )))

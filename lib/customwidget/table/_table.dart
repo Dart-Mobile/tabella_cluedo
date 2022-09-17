@@ -3,7 +3,7 @@ import '../enums/_enums.dart';
 import '_cell.dart';
 
 class CustomTable extends StatelessWidget {
-  CustomTable(
+  const CustomTable(
       {super.key,
       required this.title,
       required this.column});

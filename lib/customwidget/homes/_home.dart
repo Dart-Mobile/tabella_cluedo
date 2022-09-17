@@ -4,6 +4,7 @@ import '../table/_cell.dart';
 import '../table/_dropdown.dart';
 import '../enums/_enums.dart';
 
+// ignore: must_be_immutable
 class Home extends StatefulWidget {
   Home({super.key, required this.head});
   int head;
