@@ -16,6 +16,7 @@ class CustomTable extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
       child: Table(
+        border: TableBorder.all(),
         columnWidths: const <int, TableColumnWidth>{0: FixedColumnWidth(80)},
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         children: [
