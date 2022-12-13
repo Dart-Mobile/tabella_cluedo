@@ -29,15 +29,15 @@ class _AddPlayerState extends State<AddPlayer> {
       body: Column(
         children: [
           ...cTextFields,
-          OutlinedButton(
-              onPressed: cTextFields.length < 6
-                  ? () {
+          cTextFields.length < 6 
+            ? OutlinedButton(
+              onPressed: () {
                       setState(() {
                         cTextFields.add(CustomTextField());
                       });
-                    }
-                  : null,
+                    },
               child: const Icon(Icons.add))
+            : const SizedBox(width: 0, height: 0,)
         ],
       ),
       floatingActionButton: FloatingActionButton(
