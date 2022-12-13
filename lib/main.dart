@@ -14,7 +14,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Tabella Cluedo', 
-        theme: ThemeData(),
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromARGB(255, 10, 17, 40),
+          iconTheme: const IconThemeData(
+            color: Color.fromARGB(255, 254, 252, 251),
+            opacity: 1.0
+          ),
+          textTheme: const TextTheme(
+            bodyText2: TextStyle(
+              color: Color.fromARGB(255, 254, 252, 251)
+            )
+          ),
+          /*textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: Color.fromARGB(255, 254, 252, 251)
+          )*/
+          inputDecorationTheme: const InputDecorationTheme(
+            counterStyle: TextStyle(
+              color: Color.fromARGB(255, 254, 252, 251)
+            )
+          )
+        ),
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const AddPlayer(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../table/_cell.dart';
 import '../enums/_enums.dart';
 import '_textfield.dart';
 
@@ -15,7 +16,7 @@ class _AddPlayerState extends State<AddPlayer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorPatterns.background,
+      //backgroundColor: ColorPatterns.background,
       appBar: AppBar(
         title: Text("Tabella del Cluedo",
             style: TextStyle(
@@ -50,7 +51,7 @@ class _AddPlayerState extends State<AddPlayer> {
             Navigator.pushNamed(context, '/who');
           });
         },
-      child: const Icon(Icons.check),
+        child: const Icon(Icons.check),
       ),
     );
   }

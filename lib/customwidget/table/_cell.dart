@@ -49,7 +49,7 @@ class _CustomCellState extends State<CustomCell> {
                   Text(
                     widget.head,
                     style: TextStyle(
-                        color: ColorPatterns.text,
+                        //color: ColorPatterns.text,
                         fontStyle:
                             widget.user ? FontStyle.italic : FontStyle.normal),
                   ),

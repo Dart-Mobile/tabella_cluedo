@@ -18,7 +18,7 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextField extends State<CustomTextField> {
-  final TextEditingController _controller = TextEditingController();
+  TextEditingController _controller = TextEditingController();
 
   double widthDim(double perc) =>
       (MediaQuery.of(context).size.width * perc) / 100;
@@ -37,10 +37,10 @@ class _CustomTextField extends State<CustomTextField> {
             child: Container(
               margin: const EdgeInsets.all(0.0),
               child: TextField(
+                style: Theme.of(context).textTheme.bodyText2,
                 controller: _controller,
                 maxLength: 6,
                 decoration: InputDecoration(
-                    counterStyle: TextStyle(color: ColorPatterns.text),
                     prefixIcon: Icon(Icons.account_circle,
                         color: avatarColors[Clues.who[widget.save.b]]),
                     filled: true,
@@ -56,7 +56,7 @@ class _CustomTextField extends State<CustomTextField> {
           width: widthDim(35),
           child: Container(
             //width: 100.0,
-            margin: const EdgeInsets.only(bottom: 23.0),
+            margin: EdgeInsets.only(bottom: 23.0),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(9)),
               color: avatarColors[Clues.who[widget.save.b]],
@@ -69,13 +69,16 @@ class _CustomTextField extends State<CustomTextField> {
                       .map((String val) => DropdownMenuItem<String>(
                           value: val,
                           child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            child: Text(
-                              val,
-                              style: TextStyle(
-                                color: ColorPatterns.text,
+                            width: 110.0,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              child: Text(
+                                val,
+                                style: TextStyle(
+                                  color: ColorPatterns.text,
+                                ),
                               ),
                             ),
                           )))

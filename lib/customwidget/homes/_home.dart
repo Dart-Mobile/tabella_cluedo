@@ -41,7 +41,6 @@ class _HomeState extends State<Home> {
     List<bool> isSel = [true, false, false, false, false];
 
     return Scaffold(
-      backgroundColor: ColorPatterns.background,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
