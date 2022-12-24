@@ -20,8 +20,7 @@ class CustomTextField extends StatefulWidget {
 class _CustomTextField extends State<CustomTextField> {
   TextEditingController _controller = TextEditingController();
 
-  double widthDim(double perc) =>
-      (MediaQuery.of(context).size.width * perc) / 100;
+  double dropdownWidth = 110;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,8 @@ class _CustomTextField extends State<CustomTextField> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         SizedBox(
-          width: widthDim(59),
+          width:
+              ((MediaQuery.of(context).size.width - dropdownWidth) * 85) / 100,
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(15))),
@@ -53,9 +53,7 @@ class _CustomTextField extends State<CustomTextField> {
           ),
         ),
         SizedBox(
-          width: widthDim(35),
           child: Container(
-            //width: 100.0,
             margin: EdgeInsets.only(bottom: 23.0),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(9)),
@@ -69,16 +67,14 @@ class _CustomTextField extends State<CustomTextField> {
                       .map((String val) => DropdownMenuItem<String>(
                           value: val,
                           child: Container(
-                            width: 110.0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                              ),
-                              child: Text(
-                                val,
-                                style: TextStyle(
-                                  color: ColorPatterns.text,
-                                ),
+                            width: dropdownWidth,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                            ),
+                            child: Text(
+                              val,
+                              style: TextStyle(
+                                color: ColorPatterns.text,
                               ),
                             ),
                           )))

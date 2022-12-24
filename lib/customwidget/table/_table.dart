@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 import '../enums/_enums.dart';
 import '_cell.dart';
 
-class CustomTable extends StatelessWidget {
-  const CustomTable(
-      {super.key,
-      required this.title,
-      required this.column});
-  final String title;
-  final List<CustomCell> column;
+class CustomTable extends StatefulWidget {
+  const CustomTable({super.key, required this.clue});
+  final List<String> clue;
 
+  @override
+  State<CustomTable> createState() => _CustomTableState();
+}
 
+class _CustomTableState extends State<CustomTable> {
+  Function eq = const ListEquality().equals;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,19 +21,11 @@ class CustomTable extends StatelessWidget {
         border: TableBorder.all(),
         columnWidths: const <int, TableColumnWidth>{0: FixedColumnWidth(80)},
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-        children: [
-          TableRow(
-            children: [CustomCell(head: title, user: true),...userRow]
-          ),
-          ...[
-            for (var cell in column)
-              TableRow(children: [
-                cell,
-                ...[for (int i = 0; i < userRow.length; i++) 
-                CustomCell(element: Marker.effectiveClear, user: false)]
-              ])
-          ]
-        ],
+        children: eq(widget.clue, Clues.who)
+            ? whoTable
+            : eq(widget.clue, Clues.what)
+                ? whatTable
+                : whereTable,
       ),
     );
   }

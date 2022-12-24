@@ -9,7 +9,6 @@ class CustomDropDown extends StatefulWidget {
 }
 
 class _CustomDropDownState extends State<CustomDropDown> {
-
   List<IconData> marker = [
     Marker.clear,
     Marker.secureYes,
@@ -23,8 +22,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
     return Container(
       padding: const EdgeInsets.only(left: 12.0, right: 12.0),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(25)),
-        color: ColorPatterns.internal,
+        color: ColorPatterns.header,
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<IconData>(
@@ -37,9 +35,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
           }),
           items: marker.map((IconData e) {
             return DropdownMenuItem<IconData>(
-              value: e, 
-              child: Icon(e, color: ColorPatterns.text)
-            );
+                value: e, child: Icon(e, color: ColorPatterns.text));
           }).toList(),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabella_cluedo/customwidget/enums/_enums.dart';
 import 'customwidget/homes/_home.dart';
 import 'customwidget/homes/_homeAddPlayer.dart';
 
@@ -13,34 +14,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Tabella Cluedo', 
-        theme: ThemeData(
+      title: 'Tabella Cluedo',
+      theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromARGB(255, 10, 17, 40),
           iconTheme: const IconThemeData(
-            color: Color.fromARGB(255, 254, 252, 251),
-            opacity: 1.0
-          ),
+              color: Color.fromARGB(255, 254, 252, 251), opacity: 1.0),
           textTheme: const TextTheme(
-            bodyText2: TextStyle(
-              color: Color.fromARGB(255, 254, 252, 251)
-            )
-          ),
+              bodyText2: TextStyle(color: Color.fromARGB(255, 254, 252, 251))),
           /*textSelectionTheme: const TextSelectionThemeData(
             cursorColor: Color.fromARGB(255, 254, 252, 251)
           )*/
           inputDecorationTheme: const InputDecorationTheme(
-            counterStyle: TextStyle(
-              color: Color.fromARGB(255, 254, 252, 251)
-            )
-          )
-        ),
-        debugShowCheckedModeBanner: false,
-        routes: {
-          '/': (context) => const AddPlayer(),
-          '/who':(context) => Home(head: 0),
-          '/what':(context) => Home(head: 1),
-          '/where':(context) => Home(head: 2)
-        },
-        );
+              counterStyle:
+                  TextStyle(color: Color.fromARGB(255, 254, 252, 251)))),
+      debugShowCheckedModeBanner: false,
+      routes: {
+        // change for clues type
+        '/': (context) => const AddPlayer(),
+        '/who': (context) => Home(clues: Clues.who),
+        '/what': (context) => Home(clues: Clues.what),
+        '/where': (context) => Home(clues: Clues.where)
+      },
+    );
   }
 }

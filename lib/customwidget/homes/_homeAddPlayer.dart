@@ -29,15 +29,18 @@ class _AddPlayerState extends State<AddPlayer> {
       body: Column(
         children: [
           ...cTextFields,
-          cTextFields.length < 6 
-            ? OutlinedButton(
-              onPressed: () {
-                      setState(() {
-                        cTextFields.add(CustomTextField());
-                      });
-                    },
-              child: const Icon(Icons.add))
-            : const SizedBox(width: 0, height: 0,)
+          cTextFields.length < 6
+              ? OutlinedButton(
+                  onPressed: () {
+                    setState(() {
+                      cTextFields.add(CustomTextField());
+                    });
+                  },
+                  child: const Icon(Icons.add))
+              : const SizedBox(
+                  width: 0,
+                  height: 0,
+                )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -48,6 +51,12 @@ class _AddPlayerState extends State<AddPlayer> {
               for (CustomTextField x in cTextFields)
                 if (x.save.a != "") x.toCustomCell()
             ];
+            print("chi");
+            whoTable = generateTable(Clues.who);
+            print("cosa");
+            whatTable = generateTable(Clues.what);
+            print("dove");
+            whereTable = generateTable(Clues.where);
             Navigator.pushNamed(context, '/who');
           });
         },

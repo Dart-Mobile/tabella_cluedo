@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 import '../table/_cell.dart';
 
 class Tupla {
@@ -63,9 +64,45 @@ class Marker {
 
 IconData symbol = Marker.clear;
 
+List<TableRow> whoTable = []; //generateTable(Clues.who);
+List<TableRow> whatTable = []; //generateTable(Clues.what);
+List<TableRow> whereTable = []; //generateTable(Clues.where);
+
 Map<String, Color> avatarColors = {
   for (var i = 0; i < Clues.who.length; i++)
     Clues.who[i]: ColorPatterns.avatars[i]
 };
 
 List<CustomCell> userRow = [];
+double deviceWidth(BuildContext context, {int perc = 100}) {
+  return (MediaQuery.of(context).size.width * perc) / 100;
+}
+
+double deviceHeight(BuildContext context, {int perc = 100}) {
+  return (MediaQuery.of(context).size.height * perc) / 100;
+}
+
+List<TableRow> generateTable(List<String> clue) {
+  Function eq = const ListEquality().equals;
+  List<CustomCell> column = [
+    for (String i in clue) CustomCell(head: i, user: true)
+  ];
+  String heading = eq(clue, Clues.who)
+      ? "Chi?"
+      : eq(clue, Clues.what)
+          ? "Che Cosa?"
+          : "Dove?";
+  return [
+    TableRow(children: [CustomCell(head: heading, user: true), ...userRow]),
+    ...[
+      for (var cell in column)
+        TableRow(children: [
+          cell,
+          ...[
+            for (int i = 0; i < userRow.length; i++)
+              CustomCell(element: Marker.effectiveClear, user: false)
+          ]
+        ])
+    ]
+  ];
+}

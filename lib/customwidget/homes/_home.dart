@@ -1,37 +1,26 @@
 import 'package:flutter/material.dart';
 import '../table/_table.dart';
-import '../table/_cell.dart';
 import '../table/_dropdown.dart';
 import '../enums/_enums.dart';
 
 // ignore: must_be_immutable
 class Home extends StatefulWidget {
-  Home({super.key, required this.head});
-  int head;
+  Home({super.key, required this.clues});
+  List<String> clues;
 
   @override
   _HomeState createState() => _HomeState();
 }
 
+/*
+  widget.head --> enums.dart
+              --> from int to Clues type
+
+
+*/
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    List<String> clues = widget.head % 3 == 0
-        ? Clues.who
-        : widget.head % 3 == 1
-            ? Clues.what
-            : Clues.where;
-
-    String heading = widget.head % 3 == 0
-        ? "Chi?"
-        : widget.head % 3 == 1
-            ? "Che Cosa?"
-            : "Dove?";
-
-    List<CustomCell> column = [
-      for (String i in clues) CustomCell(head: i, user: true)
-    ];
-
     Map<String, IconData> pages = <String, IconData>{
       'chi': Icons.person,
       'che cosa': Icons.auto_stories,
@@ -44,31 +33,45 @@ class _HomeState extends State<Home> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomTable(title: heading, column: column),
+          CustomTable(
+            clue: widget.clues,
+          )
         ],
       ),
-      bottomNavigationBar: ToggleButtons(
-        isSelected: isSel,
-        children: [
-          ...[
-            for (var entry in pages.entries)
-              OutlinedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                        context,
-                        entry.key == "chi"
-                            ? "/who"
-                            : entry.key == "che cosa"
-                                ? "/what"
-                                : "/where");
-                  },
-                  child: Column(
-                    children: [Icon(entry.value), Text(entry.key)],
-                  ))
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(color: ColorPatterns.header),
+        child: ToggleButtons(
+          renderBorder: false,
+          fillColor: ColorPatterns.header,
+          isSelected: isSel,
+          children: [
+            ...[
+              for (var entry in pages.entries)
+                ButtonTheme(
+                  minWidth: 100,
+                  height: deviceHeight(context, perc: 10),
+                  child: OutlinedButton(
+                      //maximumsize
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context,
+                            entry.key == "chi"
+                                ? "/who"
+                                : entry.key == "che cosa"
+                                    ? "/what"
+                                    : "/where");
+                      },
+                      child: Column(
+                        children: [Icon(entry.value), Text(entry.key)],
+                      )),
+                )
+            ],
+            SizedBox(
+              width: deviceWidth(context, perc: 30),
+            ),
+            const CustomDropDown()
           ],
-          const Spacer(),
-          const CustomDropDown()
-        ],
+        ),
       ),
     );
   }

@@ -12,6 +12,7 @@ class CustomCell extends StatefulWidget {
   String head;
   final bool user;
   String userChar;
+  int counter = 0;
 
   @override
   State<CustomCell> createState() => _CustomCellState();
@@ -22,6 +23,13 @@ class _CustomCellState extends State<CustomCell> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (() => setState(() {
+            if (widget.element == symbol &&
+                widget.element != Marker.effectiveClear &&
+                !widget.user) {
+              widget.counter++;
+            } else {
+              widget.counter = 1;
+            }
             widget.user
                 ? 0
                 : symbol == Marker.clear
@@ -30,32 +38,42 @@ class _CustomCellState extends State<CustomCell> {
           })),
       child: Container(
         color: widget.user ? ColorPatterns.header : ColorPatterns.internal,
-        height: 82,
+        height: (deviceHeight(context) - deviceHeight(context, perc: 20)) /
+            Clues.where.length,
         alignment: Alignment.center,
         child: widget.user
             ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  !Clues.who.contains(widget.head) && 
-                  !Clues.what.contains(widget.head) &&
-                  !Clues.where.contains(widget.head) &&
-                  !widget.head.contains("?")
-                  ? Icon(
-                    Icons.account_circle,
-                    color: widget.userChar != "null"
-                    ? avatarColors[widget.userChar]
-                    : Colors.white,)
-                  : const Text(""),
+                  !Clues.who.contains(widget.head) &&
+                          !Clues.what.contains(widget.head) &&
+                          !Clues.where.contains(widget.head) &&
+                          !widget.head.contains("?")
+                      ? Icon(
+                          Icons.account_circle,
+                          color: widget.userChar != "null"
+                              ? avatarColors[widget.userChar]
+                              : Colors.white,
+                        )
+                      : const Text(""),
                   Text(
                     widget.head,
                     style: TextStyle(
-                        //color: ColorPatterns.text,
                         fontStyle:
                             widget.user ? FontStyle.italic : FontStyle.normal),
                   ),
                 ],
               )
-            : Icon(widget.element),
+            : widget.counter > 1 && Marker.effectiveClear != widget.element
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(widget.element),
+                      Text('x' + widget.counter.toString()),
+                    ],
+                  )
+                : Icon(widget.element),
+        //
       ),
     );
   }
