@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
                   child: OutlinedButton(
                       //maximumsize
                       onPressed: () {
-                        Navigator.pushNamed(
+                        Navigator.popAndPushNamed(
                             context,
                             entry.key == "chi"
                                 ? "/who"

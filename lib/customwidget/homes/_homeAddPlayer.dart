@@ -51,13 +51,11 @@ class _AddPlayerState extends State<AddPlayer> {
               for (CustomTextField x in cTextFields)
                 if (x.save.a != "") x.toCustomCell()
             ];
-            print("chi");
             whoTable = generateTable(Clues.who);
-            print("cosa");
             whatTable = generateTable(Clues.what);
-            print("dove");
             whereTable = generateTable(Clues.where);
-            Navigator.pushNamed(context, '/who');
+            Navigator.popAndPushNamed(context, '/who');
+            //Navigator.pushNamed(context, '/who');
           });
         },
         child: const Icon(Icons.check),
