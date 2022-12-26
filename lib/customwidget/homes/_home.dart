@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                 )
             ],
             SizedBox(
-              width: deviceWidth(context, perc: 30),
+              width: ((deviceWidth(context) - 100 * 3) * 80) / 100,
             ),
             const CustomDropDown()
           ],

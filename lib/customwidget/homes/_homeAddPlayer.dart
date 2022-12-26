@@ -26,22 +26,32 @@ class _AddPlayerState extends State<AddPlayer> {
             )),
         backgroundColor: ColorPatterns.header,
       ),
-      body: Column(
-        children: [
-          ...cTextFields,
-          cTextFields.length < 6
-              ? OutlinedButton(
-                  onPressed: () {
-                    setState(() {
-                      cTextFields.add(CustomTextField());
-                    });
-                  },
-                  child: const Icon(Icons.add))
-              : const SizedBox(
-                  width: 0,
-                  height: 0,
-                )
-        ],
+      body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+              minWidth: deviceWidth(context), minHeight: deviceHeight(context)),
+          child: IntrinsicHeight(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                ...cTextFields,
+                cTextFields.length < 6
+                    ? OutlinedButton(
+                        onPressed: () {
+                          setState(() {
+                            cTextFields.add(CustomTextField());
+                          });
+                        },
+                        child: const Icon(Icons.add))
+                    : const SizedBox(
+                        width: 0,
+                        height: 0,
+                      )
+              ],
+            ),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorPatterns.internal,
